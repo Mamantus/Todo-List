@@ -1,13 +1,8 @@
 const inputBox = document.getElementById('input-box');
 const listContainer = document.getElementById('list-container');
 
-// const tellDate = document.querySelector('tell-date');
 
-// let newDate = new Date().toISOString();
-
-
-
-
+let newDate = new Date().toISOString().split('T')[0];
 
 function addTask(){
 

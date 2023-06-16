@@ -3,7 +3,9 @@ const listContainer = document.getElementById('list-container');
 
 // const tellDate = document.querySelector('tell-date');
 
-let newDate = new Date().toISOString().split('T')[0];
+// let newDate = new Date().toISOString();
+
+
 
 
 
@@ -24,6 +26,7 @@ function addTask(){
         dAdd.innerHTML = "Task created " + newDate;
         li.appendChild(dAdd);
 
+            // Adds delete icon
         let span = document.createElement('span');
         span.innerHTML = "\u00d7";
         li.appendChild(span);
@@ -41,6 +44,8 @@ listContainer.addEventListener("click", function(e){
         e.target.classList.toggle("checked");
             //Adds current date and toggles between created and completed task 
         let dAdd = e.target.querySelector('.date');
+        let newDate = new Date().toISOString().split('T')[0];
+        
         if (e.target.classList.contains('checked')) {
             dAdd.innerHTML = "Task completed " + newDate;
         }
@@ -50,6 +55,7 @@ listContainer.addEventListener("click", function(e){
 
         saveData();
     }
+        // Deletes task
     else if (e.target.tagName === "SPAN"){
         e.target.parentElement.remove();
         saveData();

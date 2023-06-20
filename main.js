@@ -1,8 +1,9 @@
 const inputBox = document.getElementById('input-box');
 const listContainer = document.getElementById('list-container');
 
-
 let newDate = new Date().toISOString().split('T')[0];
+
+let number = 0; 
 
 function addTask(){
 
@@ -10,9 +11,15 @@ function addTask(){
         alert("Please write a task.")
     }
     else {
+
+        number ++;       
+        let title = "Task " + number + ": " ;
+        
+
+
             //Add task by user input
         let li = document.createElement('li');
-        li.innerHTML = inputBox.value;
+        li.innerHTML = title + inputBox.value;
         listContainer.appendChild(li);
 
             // Add date created
@@ -25,14 +32,15 @@ function addTask(){
         let span = document.createElement('span');
         span.innerHTML = "\u00d7";
         li.appendChild(span);
-        
     }
 
         //Resets inputbox
     inputBox.value = '';
+    
 
     saveData();
 }
+
     //Toggle between unchecked and checked task
 listContainer.addEventListener("click", function(e){
     if (e.target.tagName === "LI"){
@@ -53,6 +61,7 @@ listContainer.addEventListener("click", function(e){
         // Deletes task
     else if (e.target.tagName === "SPAN"){
         e.target.parentElement.remove();
+        number = 0;
         saveData();
     }
 }, false);

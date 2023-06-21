@@ -60,7 +60,7 @@ button {
 
 .title {
     margin-top: 40px;
-    margin-left: 45px;
+    margin-left: 8px;
     padding: 5px 15px;
     text-align: center;
     color: #fff;
@@ -94,7 +94,6 @@ ul li::before {
 
 ul li.checked {
     color: #7c7c7c;
-    /* text-decoration: line-through; */
 }
 
 ul li.checked::before {

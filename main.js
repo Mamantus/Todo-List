@@ -3,7 +3,7 @@ const listContainer = document.getElementById('list-container');
 
 let newDate = new Date().toISOString().split('T')[0];
 
-let number = 1; 
+let number = 0; 
 
 function addTask(){
 
@@ -12,21 +12,19 @@ function addTask(){
     }
     else {
 
-            //Add task title
-            let title = document.createElement('div');
-            title.innerHTML = "Task " + number;
-            title.classList.add('title');
-            listContainer.appendChild(title);
+        number ++; 
 
-        number ++;       
-        // let title = "Task " + number + ": " ;
-        
+            //Add task title
+        let title = document.createElement('div');
+        title.innerHTML = "Task " + number;
+        title.classList.add('title');
+        listContainer.appendChild(title);
+      
             //Add task by user input
         let li = document.createElement('li');
         li.innerHTML = inputBox.value;
         listContainer.appendChild(li);
         
-
             // Add date created
         let dAdd = document.createElement('div');
         dAdd.classList.add('date');
@@ -48,6 +46,7 @@ function addTask(){
 
     //Toggle between unchecked and checked task
 listContainer.addEventListener("click", function(e){
+
     if (e.target.tagName === "LI"){
         e.target.classList.toggle("checked");
             //Adds current date and toggles between created and completed task 
@@ -65,9 +64,10 @@ listContainer.addEventListener("click", function(e){
     }
         // Deletes task
     else if (e.target.tagName === "SPAN"){
+        
         e.target.parentElement.previousSibling.remove();
         e.target.parentElement.remove();
-        number = 1;
+        number = 0;
         saveData();
     }
 }, false);
